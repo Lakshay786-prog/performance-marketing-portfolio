@@ -8,6 +8,11 @@
    Hewan Kachru | Performance Marketing Portfolio
   </title>
   <style>
+   /* =========================================================
+      PORTFOLIO STYLES
+      Theme colors, navigation, hero, certificates, projects,
+      contact section, and responsive layout are defined below.
+      ========================================================= */
    :root {
     --yellow:#f4c430;
     --yellow2:#ffda55;
@@ -117,6 +122,7 @@ header {
 .menu {
     display:none
 }
+/* HERO SECTION: layout and background for the main introduction. */
 .hero {
     padding:74px 0 62px;
     background:linear-gradient(110deg,#fff 0%,#fff 58%,#fff3bd 58%,#ffe782 100%);
@@ -176,6 +182,7 @@ header {
     color:var(--muted);
     font-size:11px
 }
+/* HERO PORTRAIT: controls the profile image and yellow frame. */
 .portrait-wrap {
     position:relative;
     max-width:390px;
@@ -584,7 +591,27 @@ footer {
         padding:11px 13px
     }
 }
-  </style>
+  
+/* Certificate cards and image viewer */
+.cert-grid { align-items: stretch; }
+.cert { display:flex; flex-direction:column; align-items:flex-start; min-height:225px; border-radius:8px; transition:transform .2s ease, box-shadow .2s ease; }
+.cert:hover { transform:translateY(-3px); box-shadow:0 10px 24px rgba(17,17,17,.08); }
+.cert h3 { margin-top:0; }
+.cert .issuer { margin:0; font-family:Georgia,"Times New Roman",serif; font-size:14px; line-height:1.4; color:#333; font-weight:800; }
+.cert .tag { margin-top:10px; }
+.cert-button { display:inline-flex; align-items:center; justify-content:center; gap:8px; margin-top:auto; padding:10px 13px; border:1px solid #d7a900; border-radius:5px; background:var(--yellow); color:#111; font:800 12px Inter,Arial,sans-serif; cursor:pointer; transition:background .2s ease, transform .2s ease, box-shadow .2s ease; }
+.cert-button:hover { background:var(--yellow2); transform:translateY(-2px); box-shadow:0 4px 0 rgba(17,17,17,.12); }
+.cert-modal { position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(10,10,10,.82); }
+.cert-modal.open { display:flex; }
+.cert-modal-dialog { position:relative; width:min(1000px,96vw); max-height:92vh; overflow:auto; background:#fff; border-radius:10px; box-shadow:0 24px 80px rgba(0,0,0,.35); }
+.cert-modal-image { display:block; width:100%; max-height:78vh; object-fit:contain; background:#f8f8f8; }
+.cert-modal-caption { padding:14px 20px; border-top:1px solid #e5e5e5; font-size:14px; font-weight:800; }
+.cert-modal-close { position:sticky; top:10px; float:right; z-index:2; margin:10px 10px -48px 0; width:38px; height:38px; border:0; border-radius:50%; background:#111; color:#fff; font-size:26px; cursor:pointer; }
+.cert-button:focus-visible,.cert-modal-close:focus-visible { outline:3px solid #2563eb; outline-offset:3px; }
+body.modal-open { overflow:hidden; }
+@media(max-width:480px) { .cert-modal { padding:10px; } .cert-modal-dialog { width:100%; } .cert-modal-image { max-height:72vh; } }
+
+ </style>
  </head>
  <body>
   <header>
@@ -631,6 +658,7 @@ footer {
    </div>
   </header>
   <main>
+   <!-- HERO SECTION: main introduction and profile photo. -->
    <section class="hero" id="home">
     <div class="wrap hero-grid">
      <div>
@@ -647,7 +675,7 @@ footer {
        Digital and Performance Marketing Professional
       </div>
       <p>
-      Digital & Performance Marketing professional focused on Google Ads, Meta Ads, AI-powered advertising and Marketing Automations. Skilled in using data, audience insights, and AI tools to support smarter marketing decisions. Passionate about helping businesses grow through data-driven strategies and campaign optimization.
+     Digital & Performance Marketing professional focused on Google Ads, Meta Ads, AI-powered advertising and Marketing Automations. Skilled in using data, audience insights, and AI tools to support smarter marketing decisions. Passionate about helping businesses grow through data-driven strategies and campaign optimization.
       </p>
       <div class="hero-actions">
        <a class="btn primary" href="#projects">
@@ -684,6 +712,7 @@ footer {
        </div>
       </div>
      </div>
+     <!-- PROFILE PHOTO: save the supplied photo as assets/hewan-profile.jpg. -->
      <div class="portrait-wrap">
       <img alt="Hewan Kachru wearing a dark formal suit" class="portrait" src="assets/hewan-profile.jpg"/>
       <div class="portrait-caption">
@@ -692,6 +721,7 @@ footer {
      </div>
     </div>
    </section>
+   <!-- ABOUT SECTION: professional introduction and working principles. -->
    <section id="about">
     <div class="wrap">
      <div class="section-head">
@@ -765,123 +795,70 @@ footer {
      </div>
     </div>
    </section>
+   <!-- CERTIFICATIONS SECTION: certificate cards and their detail popups. -->
    <section id="certifications">
     <div class="wrap">
      <div class="section-head">
       <div>
-       <div class="kicker">
-        02 / Certifications
-       </div>
-       <h2>
-        Learning that builds capability.
-       </h2>
+       <div class="kicker">Certifications</div>
+       <h2>Learning that builds capability.</h2>
       </div>
-      <p>
-       Credentials are grouped by relevance to performance marketing, analytics, AI, and broader business knowledge.
-      </p>
+      <p>Credentials grouped by relevance to performance marketing, analytics, AI, and broader business knowledge.</p>
      </div>
      <div class="cert-grid">
       <article class="cert">
-       <div class="num">
-        01 &middot; ANALYTICS
-       </div>
-       <h3>
-        Google Analytics Certification (2026)
-       </h3>
-       <p>
-        Google Skillshop
-       </p>
-       <span class="tag">
-        Analytics &amp; Measurement
-       </span>
+       <h3>Google Analytics Certification (2026)</h3>
+       <p class="issuer">Google Skillshop</p>
+       <span class="tag">Analytics &amp; Measurement</span>
+       <button class="cert-button" type="button" data-certificate="google-analytics">View Certificate ↗</button>
       </article>
       <article class="cert">
-       <div class="num">
-        02 &middot; ADVERTISING
-       </div>
-       <h3>
-        Google Ads Apps Certification
-       </h3>
-       <p>
-        Google Skillshop
-       </p>
-       <span class="tag">
-        Google Ads
-       </span>
+       <h3>Google Ads Apps Certification</h3>
+       <p class="issuer">Google Skillshop</p>
+       <span class="tag">Google Ads</span>
+       <button class="cert-button" type="button" data-certificate="google-ads-apps">View Certificate ↗</button>
       </article>
       <article class="cert">
-       <div class="num">
-        03 &middot; AI ADS
-       </div>
-       <h3>
-        Foundations of AI-Powered Performance Ads
-       </h3>
-       <p>
-        Google Skillshop
-       </p>
-       <span class="tag">
-        AI in Advertising
-       </span>
+       <h3>Foundations of AI-Powered Performance Ads</h3>
+       <p class="issuer">Google Skillshop</p>
+       <span class="tag">AI in Advertising</span>
+       <button class="cert-button" type="button" data-certificate="ai-performance-ads">View Certificate ↗</button>
       </article>
       <article class="cert">
-       <div class="num">
-        04 &middot; AI FLUENCY
-       </div>
-       <h3>
-        AI Fluency: Framework and Foundations
-       </h3>
-       <p>
-        Claude Academy
-       </p>
-       <span class="tag">
-        AI Fluency
-       </span>
+       <h3>AI Fluency: Framework and Foundations</h3>
+       <p class="issuer">Claude Academy</p>
+       <span class="tag">AI Fluency</span>
+       <button class="cert-button" type="button" data-certificate="claude-ai-fluency">View Certificate ↗</button>
       </article>
       <article class="cert">
-       <div class="num">
-        05 &middot; STRATEGY
-       </div>
-       <h3>
-        Digital Marketing Strategy
-       </h3>
-       <p>
-        Simplilearn SkillUp
-       </p>
-       <span class="tag">
-        Digital Marketing
-       </span>
+       <h3>Digital Marketing Strategy</h3>
+       <p class="issuer">Simplilearn SkillUp</p>
+       <span class="tag">Digital Marketing</span>
+       <button class="cert-button" type="button" data-certificate="digital-marketing-strategy">View Certificate ↗</button>
       </article>
       <article class="cert">
-       <div class="num">
-        06 &middot; BUSINESS
-       </div>
-       <h3>
-        Introduction to CBAP
-       </h3>
-       <p>
-        Simplilearn SkillUp
-       </p>
-       <span class="tag">
-        Business Analysis
-       </span>
+       <h3>Introduction to CBAP</h3>
+       <p class="issuer">Simplilearn SkillUp</p>
+       <span class="tag">Business Analysis</span>
+       <button class="cert-button" type="button" data-certificate="introduction-to-cbap">View Certificate ↗</button>
       </article>
       <article class="cert">
-       <div class="num">
-        07 &middot; FINANCIAL AWARENESS
-       </div>
-       <h3>
-        Investor Education &ndash; Basic
-       </h3>
-       <p>
-        National Institute of Securities Markets (NISM)
-       </p>
-       <span class="tag">
-        Financial Awareness
-       </span>
+       <h3>Investor Education – Basic</h3>
+       <p class="issuer">National Institute of Securities Markets (NISM)</p>
+       <span class="tag">Financial Awareness</span>
+       <button class="cert-button" type="button" data-certificate="nism-investor-education">View Certificate ↗</button>
       </article>
      </div>
     </div>
    </section>
+   <div class="cert-modal" id="certificateModal" aria-hidden="true">
+    <div class="cert-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="certificateModalCaption">
+     <button class="cert-modal-close" type="button" aria-label="Close certificate viewer">&times;</button>
+     <img class="cert-modal-image" id="certificateModalImage" src="" alt="Full certificate">
+     <div class="cert-modal-caption" id="certificateModalCaption">Certificate</div>
+    </div>
+   </div>
+   <!-- PROJECTS SECTION: gym website screenshots and project details. -->
    <section id="projects">
     <div class="wrap">
      <div class="section-head">
@@ -1183,5 +1160,53 @@ footer {
     </span>
    </div>
   </footer>
- </body>
+ 
+<script>
+(function () {
+  const modal = document.getElementById("certificateModal");
+  const modalImage = document.getElementById("certificateModalImage");
+  const modalCaption = document.getElementById("certificateModalCaption");
+  const closeButton = modal.querySelector(".cert-modal-close");
+  const certificateFiles = {
+    "google-analytics": { title: "Google Analytics Certification (2026)", image: "assets/certifications/google-analytics.jpeg" },
+    "google-ads-apps": { title: "Google Ads Apps Certification", image: "assets/certifications/google-ads-apps.jpeg" },
+    "ai-performance-ads": { title: "Foundations of AI-Powered Performance Ads", image: "assets/certifications/ai-performance-ads.jpeg" },
+    "claude-ai-fluency": { title: "AI Fluency: Framework and Foundations", image: "assets/certifications/claude-ai-fluency.jpeg" },
+    "digital-marketing-strategy": { title: "Digital Marketing Strategy", image: "assets/certifications/digital-marketing-strategy.jpeg" },
+    "introduction-to-cbap": { title: "Introduction to CBAP", image: "assets/certifications/introduction-to-cbap.jpeg" },
+    "nism-investor-education": { title: "Investor Education – Basic", image: "assets/certifications/nism-investor-education.jpeg" }
+  };
+  let lastTrigger = null;
+  function closeCertificate() {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    modalImage.removeAttribute("src");
+    if (lastTrigger) lastTrigger.focus();
+  }
+  document.querySelectorAll("[data-certificate]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      const certificate = certificateFiles[button.dataset.certificate];
+      if (!certificate) return;
+      lastTrigger = button;
+      modalImage.src = certificate.image;
+      modalImage.alt = certificate.title;
+      modalCaption.textContent = certificate.title;
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      closeButton.focus();
+    });
+  });
+  closeButton.addEventListener("click", closeCertificate);
+  modal.addEventListener("click", function (event) {
+    if (event.target === modal) closeCertificate();
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && modal.classList.contains("open")) closeCertificate();
+  });
+})();
+</script>
+
+</body>
 </html>
